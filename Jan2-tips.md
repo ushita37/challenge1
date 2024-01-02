@@ -77,7 +77,7 @@ while (p != NULL) {
     sscanf(p, "%d", &(nodes[node_num].link_costs[token_num]));
 }
 ```
-のようにして、いくつデータ(`A,3`のような組)が続くか分からない時でも、`char`型やint型に変換して格納できる。
+のようにして、いくつデータ(`A,3`のような組)が続くか分からない時でも、`char`型や`int`型に変換して格納できる。
 この例では、`while`ループで複数回`strtok`を用いてポインタを動かしているので、途中で`NULL`かどうかの判定を挟まないとエラーを起こす。
 
 [strtokの解説サイト](http://www9.plala.or.jp/sgwr-t/lib/strtok.html)
