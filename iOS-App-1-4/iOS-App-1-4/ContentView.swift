@@ -15,12 +15,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Image(.background)
-            // リサイズ
-                .resizable()
-            // セーフエリア外まで表示
-                .ignoresSafeArea()
-            // 短編基準で収まるように
-                .scaledToFill()
+                .backgroundModifier()
             HStack {
                 // シンバル
                 Button {
