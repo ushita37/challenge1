@@ -14,9 +14,14 @@ struct MapView: View {
     let searchKey: String
     // キーワードから取得した緯度経度
     @State var targetCoordinate = CLLocationCoordinate2D()
+    // 表示するマップの位置
+    @State var cameraPosition: MapCameraPosition = .automatic
+    
     var body: some View {
-        Map(){
-            
+        // マップを表示
+        Map(position: $cameraPosition){
+            // マップにピンを表示
+            Marker(searchKey, coordinate: targetCoordinate)
         }
         // 検索キーワードの変更を検知
         .onChange(of: searchKey, initial: true) { oldValue, newValue
@@ -42,7 +47,14 @@ struct MapView: View {
                     
                     // 緯度経度をデバッグエリアに表示
                     print("緯度経度: \(targetCoordinate)")
-                }
+                    
+                    // 表示するマップの領域を作成
+                    cameraPosition = .region(MKCoordinateRegion(
+                        center: targetCoordinate,
+                        latitudinalMeters: 500.0,
+                        longitudinalMeters: 500.0
+                    ))
+                }// if ここまで
                 
             }
         }// onChangeここまで
